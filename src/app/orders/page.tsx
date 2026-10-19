@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import CreateOrderModal from "@/components/CreateOrderModal";
+import OrderActions from "@/components/OrderActions";
 
 interface Order {
   id: number;
@@ -98,6 +99,7 @@ export default async function OrdersPage({
                     <th scope="col" className="px-6 py-4">Customer ID</th>
                     <th scope="col" className="px-6 py-4">Total Amount</th>
                     <th scope="col" className="px-6 py-4">Status</th>
+                    <th scope="col" className="px-6 py-4 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-sm">
@@ -119,6 +121,9 @@ export default async function OrdersPage({
                           {order.status || "COMPLETED"}
                         </span>
                       </td>
+                      <td className="px-6 py-4 text-right">
+                          <OrderActions order={order} />
+</td>
                     </tr>
                   ))}
                 </tbody>

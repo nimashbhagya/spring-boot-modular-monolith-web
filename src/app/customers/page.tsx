@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import AddCustomerModal from "@/components/AddCustomerModal";
+import CustomerActions from "@/components/CustomerActions";
 
 // 1. TypeScript Interface for the Customer response from Spring Boot
 interface Customer {
@@ -112,13 +113,16 @@ export default async function CustomersPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <Link
-                          href={`/orders?customerId=${customer.id}`}
-                          className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition"
-                        >
-                          View Orders &rarr;
-                        </Link>
-                      </td>
+  <div className="flex items-center justify-end gap-4">
+    <Link
+      href={`/orders?customerId=${customer.id}`}
+      className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition"
+    >
+      Orders &rarr;
+    </Link>
+    <CustomerActions customer={customer} />
+  </div>
+</td>
                     </tr>
                   ))}
                 </tbody>
